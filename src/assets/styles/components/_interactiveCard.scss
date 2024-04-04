@@ -1,0 +1,87 @@
+.interactive-card {
+  display: flex;
+
+  .card-part {
+    position: relative;
+    flex: 1;
+    display: grid;
+    .cards-container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 75%;
+      gap: 2rem;
+      top: 0;
+      left: 20%;
+      bottom: 0;
+      .card-back {
+        position: relative;
+        .cvc-text {
+          position: absolute;
+          top: 110px;
+          right: 50px;
+          color: $white;
+        }
+      }
+
+      .card-front {
+        position: relative;
+        .card-content {
+          padding: 1.5rem;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          .card-data{
+            color: $white;
+            letter-spacing: 4px;
+          }
+
+          .circles-wrapper{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .filled-circle{
+              border-radius: 50%;
+              background-color: $white;
+              width: 50px;
+              height: 50px;
+            }
+
+            .outline-circle{
+              border-radius: 50%;
+              width: 25px;
+              height: 25px;
+              border: 1px solid $white;
+            }
+          }
+        }
+      }
+
+      .left-alignment {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+      }
+      .right-alignment {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+      }
+    }
+  }
+
+  .form-part {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
