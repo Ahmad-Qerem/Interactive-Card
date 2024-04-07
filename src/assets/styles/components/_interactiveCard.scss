@@ -1,6 +1,8 @@
 .interactive-card {
   display: flex;
-
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+  }
   .card-part {
     position: relative;
     flex: 1;
@@ -12,10 +14,15 @@
       align-items: center;
       flex-direction: column;
       width: 75%;
+      max-width: 650px;
+      min-width: 450px;
       gap: 2rem;
       top: 0;
-      left: 20%;
+      left: 10vw;
       bottom: 0;
+      @media screen and (max-width: 750px) {
+        
+      }
       .card-back {
         position: relative;
         .cvc-text {
@@ -38,24 +45,24 @@
           display: flex;
           justify-content: space-between;
           flex-direction: column;
-          .card-data{
+          .card-data {
             color: $white;
             letter-spacing: 4px;
           }
 
-          .circles-wrapper{
+          .circles-wrapper {
             display: flex;
             align-items: center;
             gap: 1rem;
 
-            .filled-circle{
+            .filled-circle {
               border-radius: 50%;
               background-color: $white;
               width: 50px;
               height: 50px;
             }
 
-            .outline-circle{
+            .outline-circle {
               border-radius: 50%;
               width: 25px;
               height: 25px;
@@ -66,11 +73,13 @@
       }
 
       .left-alignment {
+        z-index: 1;
         width: 100%;
         display: flex;
         justify-content: start;
       }
       .right-alignment {
+        z-index: 0;
         width: 100%;
         display: flex;
         justify-content: end;
@@ -83,5 +92,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    .thank-you-wrapper {
+      min-height: 550px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column9;
+    }
   }
 }

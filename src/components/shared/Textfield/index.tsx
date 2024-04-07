@@ -6,7 +6,7 @@ interface TextfieldProps extends FieldAttributes<any> {
   name: string;
 }
 
-const Textfield: React.FC<TextfieldProps> = ({ label, name }) => {
+const Textfield: React.FC<TextfieldProps> = ({ label, name, ...props }) => {
   const [field, meta] = useField({ name });
 
   const id = `text-field-${name}`;
@@ -19,8 +19,9 @@ const Textfield: React.FC<TextfieldProps> = ({ label, name }) => {
       <input
         id={id}
         data-testid={id}
-        className="form-control text-input"
+        className={`form-control text-input ${meta.touched && meta.error ? "is-invalid" : ""}`}
         {...field}
+        {...props}
       />
       <div className="text-danger text-nowrap" style={{ height: 16 }}>
         {meta.touched && meta.error ? meta.error : null}

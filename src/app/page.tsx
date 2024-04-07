@@ -1,8 +1,6 @@
-import InteractiveCard from "@/components/shared/InteractiveCard"
+import InteractiveCard from "@/components/shared/InteractiveCard";
 const Home = () => {
-  return (
-    <InteractiveCard/>
-  )
-}
+  return <InteractiveCard />;
+};
 
-export default Home
+export default Home;

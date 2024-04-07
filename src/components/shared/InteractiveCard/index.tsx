@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import BackGroundImage from "../../../assets/images/bg-main-desktop.png";
+import BackGroundImageMobile from "../../../assets/images/bg-main-mobile.png";
 import { CardFront } from "./CardFront";
 import { CardBack } from "./CardBack";
 import { CardForm } from "../CardForm";
@@ -18,6 +19,13 @@ const InteractiveCard = () => {
     <div className="interactive-card">
       <div className="card-part">
         <Image
+          className="d-block d-md-none d-lg-none mb-5"
+          src={BackGroundImageMobile}
+          alt="dark background"
+          style={{ width: "100%" }}
+        />
+        <Image
+        className="d-none d-md-block "
           src={BackGroundImage}
           style={{ height: "100vh" }}
           alt="dark background"

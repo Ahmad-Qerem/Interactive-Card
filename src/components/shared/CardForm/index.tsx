@@ -5,6 +5,8 @@ import Button from "../Button";
 import Textfield from "../Textfield";
 import { constants } from "@/constants/languageConstants";
 import { regExp } from "@/constants/regExp";
+import { useState } from "react";
+import ThankYou from "../ThankYou";
 
 interface CardFormProps {
   setCardValues: (values: {
@@ -17,7 +19,10 @@ interface CardFormProps {
 }
 
 export const CardForm: React.FC<CardFormProps> = ({ setCardValues }) => {
-  return (
+  const [showThankYou, setShowThankYou] = useState<Boolean>(false);
+  return showThankYou ? (
+    <ThankYou setShowThankYou={setShowThankYou} />
+  ) : (
     <Formik
       initialValues={{
         cardHolderName: "",
@@ -39,10 +44,11 @@ export const CardForm: React.FC<CardFormProps> = ({ setCardValues }) => {
       })}
       onSubmit={async (values, { resetForm }) => {
         setCardValues(values);
+        setShowThankYou(true);
         resetForm();
       }}
     >
-      <Form className="row m-5 p-5">
+      <Form className="row p-3">
         <div className="col-12">
           <Textfield
             label="CardHolder Name"
@@ -60,8 +66,8 @@ export const CardForm: React.FC<CardFormProps> = ({ setCardValues }) => {
           />
         </div>
 
-        <div className="row">
-          <div className="col-3">
+        <div className="d-flex justify-content-between gap-3">
+          <div style={{ width: "100px" }}>
             <Textfield
               label="Exp. Date (MM/YY)"
               name="expiryDateMM"
@@ -69,7 +75,7 @@ export const CardForm: React.FC<CardFormProps> = ({ setCardValues }) => {
               placeholder="MM"
             />
           </div>
-          <div className="col-3">
+          <div style={{ width: "100px" }}>
             <Textfield
               label=" "
               name="expiryDateYY"
@@ -77,22 +83,18 @@ export const CardForm: React.FC<CardFormProps> = ({ setCardValues }) => {
               placeholder="YY"
             />
           </div>
-          <div className="col-6">
-            <Textfield
-              label="CVC"
-              name="CVC"
-              type="text"
-              placeholder="e.g. 123"
-            />
-          </div>
+          <Textfield
+            label="CVC"
+            name="CVC"
+            type="text"
+            placeholder="e.g. 123"
+          />
         </div>
-        <Button
-          type="submit"
-          style={{ margin: "0 12px" }}
-          className="btn-dark w-100"
-        >
-          Confirm
-        </Button>
+        <div>
+          <Button type="submit" className="btn-dark w-100">
+            Confirm
+          </Button>
+        </div>
       </Form>
     </Formik>
   );
